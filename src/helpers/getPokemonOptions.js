@@ -2,7 +2,7 @@ import pokemonApi from "@/api/pokemonApi"
 
 
 const getPokemons = () => {
-    
+
     const pokemonsArr = Array.from( Array(650) )
 
     return pokemonsArr.map( ( _, index) => index + 1)
@@ -20,9 +20,6 @@ const getPokemonOptions = async () => {
 
 const getPokemonsName = async ( [a ,b, c, d] =  [] ) => {
 
-    // const resp = await pokemonApi.get(`/1`)
-    // console.log(resp.data.name, resp.data.id)
-
     const promisesArr = [
         pokemonApi.get(`${ a }`),
         pokemonApi.get(`${ b }`),
@@ -30,7 +27,11 @@ const getPokemonsName = async ( [a ,b, c, d] =  [] ) => {
         pokemonApi.get(`${ d }`)
     ]
 
-    const [p1, p2, p3, p4] = await Promise.all( promisesArr )
+    const [ p1,
+            p2,
+            p3,
+            p4
+          ] = await Promise.all( promisesArr )
 
     return [
         {name: p1.data.name, id: p1.data.id},
