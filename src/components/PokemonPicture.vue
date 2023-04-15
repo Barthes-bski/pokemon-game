@@ -1,13 +1,13 @@
 <template>
     <div class="pokemon-container">
-        <img
+        <img v-if="!showPokemon"
             :src="imgSrc"
-                        class="hidden-pokemon"
+            class="hidden-pokemon"
             alt="pokemon"
         />
 
         <img
-            v-if="showPokemon"
+            v-else
             :src="imgSrc"
             alt="pokemon"
         />
@@ -43,8 +43,6 @@
     }
     img {
         height: 200px;
-        position: absolute;
-        right: 32%;
         user-select: none;
         -moz-user-select: none;
         -ms-user-select: none;
